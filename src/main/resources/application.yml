@@ -1,0 +1,26 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /customFrameWork
+
+spring:
+  datasource:
+    url: jdbc:mysql://129.204.58.10:3306/captruepackage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  mail:
+    host: smtp.qq.com
+    username: 1690147900@qq.com
+    password: xprzstiwiynabehd
+    port: 587
+    default-encoding: UTF-8
+
+#mybatis:
+#  typeAliasesPackage: com.example.demo.entity
+#  mapperLocations: classpath:mapper/*.xml
+#mybatis-plus:
+#  global-config:
+#    db-config:
+#      #Sequence序列接口实现类配置
+#      key-generator: com.baomidou.mybatisplus.extension.incrementer.OracleKeyGenerator
