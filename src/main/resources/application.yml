@@ -5,14 +5,14 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://129.204.58.10:3306/captruepackage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+    url: jdbc:mysql://127.0.0.1:3306/captruepackage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
   mail:
     host: smtp.qq.com
-    username: 1690147900@qq.com
-    password: xprzstiwiynabehd
+    username: QQ邮箱
+    password: 授权码
     port: 587
     default-encoding: UTF-8
 
