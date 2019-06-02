@@ -1,3 +1,4 @@
+/*
 package com.example.demo.service;
 
 
@@ -14,3 +15,4 @@ public interface IFindRecordService extends IService<Map<String,String>> {
 
     public void addRecord(String url);
 }
+*/

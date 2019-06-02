@@ -9,12 +9,30 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+      hibernate:
+        ddl-auto: update
+        use-new-id-generator-mappings: true
+        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      properties:
+        hibernate:
+          current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+          cache:
+            use_query_cache: false
+            use_second_level_cache: false
+            region:
+              factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+          dialect: org.hibernate.dialect.MySQL5Dialect
+          show_sql: true
+      generate-ddl: false
   mail:
     host: smtp.qq.com
     username: QQ邮箱
     password: 授权码
     port: 587
     default-encoding: UTF-8
+
+
 
 #mybatis:
 #  typeAliasesPackage: com.example.demo.entity
