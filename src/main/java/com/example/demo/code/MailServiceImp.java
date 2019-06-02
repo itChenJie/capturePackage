@@ -46,7 +46,7 @@ public class MailServiceImp implements MailService {
         //发送邮箱
         for (Map<String,StringBuilder> map :abh ){
             if(isRecord(map.get("textName").toString())) {
-                this.sendSimpleMail("1690147900@qq.com", map);//执行邮箱发送功能
+                this.sendSimpleMail(mailName, map);//执行邮箱发送功能
                 findRecordService.addRecord(map.get("textName").toString());//添加推送记录
             }
         }
