@@ -1,12 +1,13 @@
 package com.example.demo.code;
 
 import com.example.demo.entity.Record;
-import com.example.demo.service.HttpClient;
+import com.example.demo.util.HttpClient;
 import com.example.demo.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Map;
 @Service
 public class MailServiceImp implements MailService {
     @Autowired
-    private JavaMailSender mailSender;
+    private JavaMailSenderImpl mailSender;
     @Value("${spring.mail.username}")
     private String mailName;
 
@@ -35,7 +36,10 @@ public class MailServiceImp implements MailService {
         }
 
     }
-    //启动抓包并且发送邮件Chen_Jie06@163
+
+    /**
+     * 启动抓包并且发送邮件
+     */
     @Override
     public void beginCapturePackage(){
         MailService mailService = new MailServiceImp();
@@ -47,12 +51,17 @@ public class MailServiceImp implements MailService {
             if(isRecord(map.get("textName").toString())) {
                 //执行邮箱发送功能
                 this.sendSimpleMail(mailName, map);
-               // findRecordService.addRecord(map.get("textName").toString());//添加推送记录
+                //添加推送记录
                 recordService.save(new Record(null,map.get("textName").toString(),map.get("textContent").toString()));
             }
         }
     }
-    //判断是否已推送
+
+    /**
+     * 判断是否已推送
+     * @param textName
+     * @return
+     */
     public boolean isRecord(String textName){
         Record record = recordService.findOneByCode(textName);
         return record ==null?true:false;

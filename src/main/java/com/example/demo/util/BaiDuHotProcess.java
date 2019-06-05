@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.util;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Node;

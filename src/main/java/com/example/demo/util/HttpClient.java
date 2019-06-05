@@ -1,10 +1,9 @@
-package com.example.demo.service;
+package com.example.demo.util;
 import org.jsoup.Jsoup;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.jsoup.nodes.Document;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
