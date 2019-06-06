@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.config.RedisCache;
 import com.example.demo.dao.RecordDao;
 import com.example.demo.entity.Record;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,12 @@ public class RecordService {
     @Autowired
     private RecordDao recordDao;
 
+    /**
+     * 根据章节名称去数据库查询/Redis里获取
+     * @param code
+     * @return
+     */
+    @RedisCache
     public Record findOneByCode(String code){
         Optional<Record> records=this.recordDao.findOne(Example.of(Record.builder().textName(code).build()));
         return records.orElse(null);
