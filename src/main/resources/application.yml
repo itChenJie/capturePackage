@@ -5,7 +5,8 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/captruepackage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+    url: jdbc:mysql://docker服务机IP:3306/captruepackage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=round&useSSL=false&serverTimezone=CTT
+    #url: jdbc:mysql://docker服务机IP:3306/captruepackage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
@@ -27,13 +28,24 @@ spring:
       generate-ddl: false
   mail:
     host: smtp.qq.com
-    username:
-    password:
-    port: 587
+    username: QQ邮箱
+    password: 授权码
+    port: 465
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 25000
+          ssl:
+            enable: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+          starttls:
+            enable: true
     default-encoding: UTF-8
   redis:
     database: 0
-    host: 127.0.0.1
+    host: docker服务机IP
     port: 6379
     password:
     jedis:

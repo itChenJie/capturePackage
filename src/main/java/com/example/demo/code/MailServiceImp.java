@@ -19,9 +19,8 @@ public class MailServiceImp implements MailService {
     private JavaMailSenderImpl mailSender;
     @Value("${spring.mail.username}")
     private String mailName;
-
-   @Autowired
-   private RecordService recordService;
+    @Autowired
+    private RecordService recordService;
     @Override
     public void sendSimpleMail(String to, Map<String,StringBuilder> map) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
@@ -29,13 +28,15 @@ public class MailServiceImp implements MailService {
         mailMessage.setSubject(map.get("textName").toString());
         mailMessage.setTo(to);
         mailMessage.setText(map.get("textContent").toString());
+
         try{
             mailSender.send(mailMessage);
+            System.out.println("----------------发送成功！---------------------");
         }catch (Exception e){
             e.printStackTrace();
         }
 
-    }
+   }
 
     /**
      * 启动抓包并且发送邮件

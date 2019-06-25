@@ -16,7 +16,7 @@ public class Capture {
     @Autowired
     private MailService mailService;
 
-    @Scheduled(cron="0 0/15 * * * ?")//定时任务 每15分钟执行一次
+    @Scheduled(cron="0 0/1 * * * ?")//定时任务 每15分钟执行一次
     public void morning(){
         System.out.println("111");
         log.info(String.valueOf(new Date()));

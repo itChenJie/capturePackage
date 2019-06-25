@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
+import java.util.Properties;
+
 /**
  * @ClassName JavaMailSenderBean
  * @Description TODO
@@ -27,6 +29,16 @@ public class JavaMailSenderBean {
         mailSender.setHost(mail.getHost());
         mailSender.setUsername(mail.getUsername());
         mailSender.setPassword(mail.getPassword());
+        mailSender.setPort(mail.getPort());
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        // 使用JSSE的SSL
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        // socketfactory来取代默认的socketfactory
+        // 只处理SSL的连接,对于非SSL的连接不做处理
+        properties.put("mail.smtp.socketFactory.fallback", "false");
+        properties.put("mail.smtp.ssl.enable", true);
+        mailSender.setJavaMailProperties(properties);
         return  mailSender;
     }
 }

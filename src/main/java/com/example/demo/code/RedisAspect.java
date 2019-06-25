@@ -65,7 +65,7 @@ public class RedisAspect {
         System.out.println("Redis缓存AOP处理所用时间:"+(endTime-startTime));
         System.out.println("**********没有从Redis查到数据**********");
         try{
-            obj = joinPoint.proceed();
+             obj = joinPoint.proceed();
         }catch(Throwable e){
             e.printStackTrace();
         }
@@ -75,7 +75,10 @@ public class RedisAspect {
         if(code.equals("OK")){
             System.out.println("**********数据成功保存到Redis缓存!!!**********");
             System.out.println("Redis的KEY值:"+redisKey);
-            System.out.println("REDIS的VALUE值:"+obj.toString());
+            if (obj!=null){
+                System.out.println("REDIS的VALUE值:"+obj.toString());
+            }
+
         }
         return obj;
     }
