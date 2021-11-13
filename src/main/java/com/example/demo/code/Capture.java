@@ -18,7 +18,6 @@ public class Capture {
 
     @Scheduled(cron="0 0/15 * * * ?")//定时任务 每15分钟执行一次
     public void morning(){
-        System.out.println("111");
         log.info(String.valueOf(new Date()));
         mailService.beginCapturePackage();//启动抓包
     }

@@ -24,7 +24,7 @@ public class BaiDuHotProcess {
         //当前页面节点
         Node divsBig = doc.childNode(1);
         //获取到章节名称列表节点
-        Node theme = divsBig.childNode(3).childNode(1).childNode(19).childNode(1).childNode(1);
+        Node theme = divsBig.childNode(2).childNode(1).childNode(17).childNode(1).childNode(1);
         //获取每一个章节名称
         for(int i=0;i<theme.childNodes().size();i++){
             Map<String,String> map = new HashMap<String, String>();
@@ -49,7 +49,7 @@ public class BaiDuHotProcess {
         textName.append(divsBig2.get(0).getElementsByTag("h1").get(0).ownText());
         content.put("textName",textName);
         //章节内容
-        textStr.append(divsBig2.get(0).getElementsByTag("div").get(6).ownText());
+        textStr.append(divsBig2.get(0).getElementById("content").ownText());
         content.put("textContent",textStr);
         return content;
     }

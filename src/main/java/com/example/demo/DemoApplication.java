@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 /*@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})*//*
 @SpringBootApplication(exclude = WebAutoConfiguration.class)*/
 
-@SpringBootApplication()
+@SpringBootApplication
 @EnableScheduling
 @MapperScan("com.example.demo.dao")
 public class DemoApplication {

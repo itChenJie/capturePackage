@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.RecordMapper">
-    
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.Record">
+        <id column="id" property="id"/>
+        <result column="urlId" property="urlId"/>
+        <result column="textName" property="textName"/>
+    </resultMap>
+
+
     <select id="isPush" resultType="java.lang.Integer">
         SELECT
             count( textName )
         FROM
             record
         WHERE
-            textName = #{url}
+            textName = #{url} and url_id = #{urlId}
     </select>
 
     <insert id="addRecord">
-        INSERT INTO record ( textName )
+        INSERT INTO record ( textName,url_id)
         VALUES
-            ( #{url} )
+            ( #{url} ,#{urlId} )
 
     </insert>
 </mapper>
