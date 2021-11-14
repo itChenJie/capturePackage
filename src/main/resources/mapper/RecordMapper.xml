@@ -4,21 +4,43 @@
     <resultMap id="BaseResultMap" type="com.example.demo.entity.Record">
         <id column="id" property="id"/>
         <result column="urlId" property="urlId"/>
-        <result column="textName" property="textName"/>
+        <result column="text_name" property="textName"/>
+        <result column="continued_time" property="continuedTime"/>
+        <result column="num" property="num"/>
     </resultMap>
 
 
     <select id="isPush" resultType="java.lang.Integer">
         SELECT
-            count( textName )
+            count( text_name )
         FROM
             record
         WHERE
-            textName = #{url} and url_id = #{urlId}
+            text_name = #{url} and url_id = #{urlId}
+    </select>
+
+    <select id="findRecentChapter" resultType="com.example.demo.entity.Record">
+        SELECT
+            *
+        FROM
+            record
+        WHERE
+            url_id = #{urlId}
+        ORDER BY id DESC
+        LIMIT 0,1
+    </select>
+
+    <select id="findRotationInnerChapter" resultType="com.example.demo.entity.Record">
+        SELECT
+            *
+        FROM
+            record
+        WHERE
+            url_id = #{urlId} and continued_time >= now()
     </select>
 
     <insert id="addRecord">
-        INSERT INTO record ( textName,url_id)
+        INSERT INTO record ( text_name,url_id)
         VALUES
             ( #{url} ,#{urlId} )
 
