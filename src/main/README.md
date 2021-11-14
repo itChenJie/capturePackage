@@ -7,3 +7,7 @@ master分支 spring-boot+MyBats
     password: 授权码
 
 
+mvn install
+
+
+
